@@ -1,4 +1,6 @@
 import { Mail, MapPin, Palette, Gamepad2, Sparkles } from "lucide-react";
+import avatarImage from "@/assets/avatar.png";
+import featuredArt from "@/assets/featured-art.png";
 
 const skills = [
   { icon: Palette, label: "Ilustração Digital", description: "Concept art e character design" },
@@ -55,11 +57,34 @@ const About = () => {
 
           {/* Right Column - Contact Card */}
           <div className="relative">
+            {/* Featured Art - Decorative */}
+            <div className="absolute -top-16 -right-8 w-48 h-48 opacity-20 pointer-events-none hidden xl:block">
+              <img
+                src={featuredArt}
+                alt=""
+                className="w-full h-full object-contain"
+              />
+            </div>
+
             {/* Decorative Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-3xl blur-3xl" />
             
             <div className="relative card-gradient rounded-3xl p-8 shadow-soft">
-              <h3 className="font-display text-2xl font-bold mb-6">
+              {/* Avatar */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-20 h-20 rounded-full overflow-hidden ring-4 ring-primary/20 shadow-lg">
+                  <img
+                    src={avatarImage}
+                    alt="Avatar"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-display text-xl font-bold">Stach</h3>
+                  <p className="text-sm text-muted-foreground">Artista Digital</p>
+                </div>
+              </div>
+              <h3 className="font-display text-xl font-bold mb-6">
                 Vamos Trabalhar Juntos?
               </h3>
               

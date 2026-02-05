@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ProjectDock from "./ProjectDock";
 import ProjectCard from "./ProjectCard";
+import ImageLightbox from "./ImageLightbox";
 
 // Import images
 import concept1 from "@/assets/concept-1.jpg";
@@ -74,6 +75,16 @@ const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("concepts");
   const [displayedProjects, setDisplayedProjects] = useState<Project[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleProjectClick = (projectId: string) => {
+    const index = displayedProjects.findIndex((p) => p.id === projectId);
+    if (index !== -1) {
+      setCurrentImageIndex(index);
+      setLightboxOpen(true);
+    }
+  };
 
   useEffect(() => {
     setIsTransitioning(true);
@@ -121,6 +132,7 @@ const Gallery = () => {
               description={project.description}
               category={project.category}
               delay={index * 100}
+              onClick={() => handleProjectClick(project.id)}
             />
           ))}
         </div>
@@ -133,6 +145,15 @@ const Gallery = () => {
             </p>
           </div>
         )}
+
+        {/* Lightbox */}
+        <ImageLightbox
+          isOpen={lightboxOpen}
+          onClose={() => setLightboxOpen(false)}
+          projects={displayedProjects}
+          currentIndex={currentImageIndex}
+          onNavigate={setCurrentImageIndex}
+        />
       </div>
     </section>
   );

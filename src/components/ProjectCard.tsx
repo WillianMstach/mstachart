@@ -6,18 +6,20 @@ interface ProjectCardProps {
   description: string;
   category: string;
   delay?: number;
+  onClick?: () => void;
 }
 
-const ProjectCard = ({ image, title, description, category, delay = 0 }: ProjectCardProps) => {
+const ProjectCard = ({ image, title, description, category, delay = 0, onClick }: ProjectCardProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <article
-      className="group relative overflow-hidden rounded-xl card-gradient shadow-soft animate-scale-in"
+      className="group relative overflow-hidden rounded-xl card-gradient shadow-soft animate-scale-in cursor-pointer"
       style={{ animationDelay: `${delay}ms` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
     >
       {/* Image Container */}
       <div className="aspect-square overflow-hidden">
