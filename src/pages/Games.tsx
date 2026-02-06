@@ -19,6 +19,14 @@ const games: Game[] = [
     itchUrl: "https://willianmstach.itch.io/flappybat",
     embedUrl: "https://itch.io/embed-upload/12074498?color=1a2e1a",
   },
+  {
+    id: "hollow-depths",
+    title: "Hollow Depths",
+    description:
+      "Metroidvania em pixel art ambientado em cavernas subterrâneas cheias de criaturas místicas e segredos ancestrais.",
+    itchUrl: "https://willianmstach.itch.io/hollow-depths",
+    embedUrl: "https://itch.io/embed-upload/12074498?color=1a2e1a",
+  },
 ];
 
 const Games = () => {
