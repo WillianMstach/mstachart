@@ -1,6 +1,5 @@
 import { Mail, MapPin, Palette, Gamepad2, Sparkles } from "lucide-react";
-import avatarImage from "@/assets/avatar.png";
-import featuredArt from "@/assets/featured-art.png";
+import npcCharacter from "@/assets/npc-character.png";
 
 const skills = [
   { icon: Palette, label: "Ilustração Digital", description: "Concept art e character design" },
@@ -13,7 +12,7 @@ const About = () => {
     <section id="about" className="py-24 px-6 bg-muted/30">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Info */}
+          {/* Left Column - Skills */}
           <div className="space-y-8">
             <div>
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -55,70 +54,71 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right Column - Contact Card */}
-          <div className="relative">
-            {/* Featured Art - Decorative */}
-            <div className="absolute -top-16 -right-8 w-48 h-48 opacity-20 pointer-events-none hidden xl:block">
+          {/* Right Column - NPC + Speech Bubble */}
+          <div className="relative flex items-end gap-0 justify-center lg:justify-end">
+            {/* NPC Character */}
+            <div className="flex-shrink-0 w-48 md:w-56 lg:w-64 z-10 -mr-4 self-end">
               <img
-                src={featuredArt}
-                alt=""
-                className="w-full h-full object-contain"
+                src={npcCharacter}
+                alt="Willian Mstach NPC"
+                className="w-full h-auto object-contain drop-shadow-2xl"
               />
             </div>
 
-            {/* Decorative Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 rounded-3xl blur-3xl" />
-            
-            <div className="relative card-gradient rounded-3xl p-8 shadow-soft">
-              {/* Avatar */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-20 h-20 rounded-full overflow-hidden ring-4 ring-primary/20 shadow-lg">
-                  <img
-                    src={avatarImage}
-                    alt="Avatar"
-                    className="w-full h-full object-cover"
+            {/* Speech Bubble */}
+            <div className="relative flex-1 max-w-sm">
+              {/* Bubble tail pointing left */}
+              <div className="absolute left-0 bottom-16 -translate-x-3 w-6 h-6 z-0">
+                <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+                  <path
+                    d="M24 0C24 0 8 4 0 24C4 16 12 12 24 12V0Z"
+                    className="fill-[hsl(var(--card))]"
                   />
-                </div>
-                <div>
+                  <path
+                    d="M24 0C24 0 8 4 0 24C4 16 12 12 24 12"
+                    className="stroke-primary/30"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
+
+              <div className="relative card-gradient rounded-2xl border-2 border-primary/20 p-6 shadow-soft ml-2">
+                {/* Name & Title */}
+                <div className="mb-4">
                   <h3 className="font-display text-xl font-bold">Willian Mstach</h3>
                   <p className="text-sm text-muted-foreground">MSTACH.ART — Artista Digital</p>
                 </div>
-              </div>
-              <h3 className="font-display text-xl font-bold mb-6">
-                Vamos Trabalhar Juntos?
-              </h3>
-              
-              <div className="space-y-6">
+
                 {/* Contact Info */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-full bg-primary/10">
-                      <Mail className="w-5 h-5 text-primary" />
+                <div className="space-y-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-primary/10">
+                      <Mail className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium">contato@seuportfolio.com</p>
+                      <p className="text-xs text-muted-foreground">Email</p>
+                      <p className="text-sm font-medium">contato@seuportfolio.com</p>
                     </div>
                   </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-full bg-primary/10">
-                      <MapPin className="w-5 h-5 text-primary" />
+
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-full bg-primary/10">
+                      <MapPin className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Localização</p>
-                      <p className="font-medium">Brasil</p>
+                      <p className="text-xs text-muted-foreground">Localização</p>
+                      <p className="text-sm font-medium">Brasil</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Divider */}
-                <div className="border-t border-border" />
+                <div className="border-t border-border mb-4" />
 
                 {/* Social Links */}
-                <div>
-                  <p className="text-sm text-muted-foreground mb-4">Me encontre nas redes</p>
-                  <div className="flex flex-wrap gap-3">
+                <div className="mb-4">
+                  <p className="text-xs text-muted-foreground mb-3">Me encontre nas redes</p>
+                  <div className="flex flex-wrap gap-2">
                     {[
                       { label: "Itch.io", href: "https://willianmstach.itch.io/" },
                       { label: "Instagram", href: "#" },
@@ -130,7 +130,7 @@ const About = () => {
                         href={social.href}
                         target={social.href.startsWith("http") ? "_blank" : undefined}
                         rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="px-4 py-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300 text-sm font-medium"
+                        className="px-3 py-1.5 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300 text-xs font-medium"
                       >
                         {social.label}
                       </a>
@@ -139,7 +139,7 @@ const About = () => {
                 </div>
 
                 {/* CTA Button */}
-                <button className="w-full py-4 accent-gradient text-primary-foreground rounded-xl font-semibold shadow-soft hover:scale-[1.02] transition-transform duration-300">
+                <button className="w-full py-3 accent-gradient text-primary-foreground rounded-xl font-semibold shadow-soft hover:scale-[1.02] transition-transform duration-300 text-sm">
                   Enviar Mensagem
                 </button>
               </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ProjectDock from "./ProjectDock";
 import ProjectCard from "./ProjectCard";
 import ImageLightbox from "./ImageLightbox";
@@ -18,6 +19,7 @@ interface Project {
   description: string;
   category: string;
   categoryId: string;
+  isLink?: boolean;
 }
 
 const projects: Project[] = [
@@ -69,17 +71,40 @@ const projects: Project[] = [
     category: "Full Art",
     categoryId: "full-art",
   },
+  {
+    id: "7",
+    image: gameArt1,
+    title: "FlappyBat",
+    description: "Versão do clássico Flappy Bird com arte original e pixel art. Jogue no navegador!",
+    category: "Jogos",
+    categoryId: "games",
+    isLink: true,
+  },
+  {
+    id: "8",
+    image: gameArt2,
+    title: "Hollow Depths",
+    description: "Metroidvania em pixel art com cavernas subterrâneas e criaturas místicas.",
+    category: "Jogos",
+    categoryId: "games",
+    isLink: true,
+  },
 ];
 
 const Gallery = () => {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("concepts");
   const [displayedProjects, setDisplayedProjects] = useState<Project[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const handleProjectClick = (projectId: string) => {
-    const index = displayedProjects.findIndex((p) => p.id === projectId);
+  const handleProjectClick = (project: Project) => {
+    if (project.isLink) {
+      navigate("/games");
+      return;
+    }
+    const index = displayedProjects.findIndex((p) => p.id === project.id);
     if (index !== -1) {
       setCurrentImageIndex(index);
       setLightboxOpen(true);
@@ -132,7 +157,7 @@ const Gallery = () => {
               description={project.description}
               category={project.category}
               delay={index * 100}
-              onClick={() => handleProjectClick(project.id)}
+              onClick={() => handleProjectClick(project)}
             />
           ))}
         </div>
