@@ -6,54 +6,54 @@
 
 @layer base {
   :root {
-    /* Moebius-inspired palette */
-    --background: 35 30% 97%;
-    --foreground: 220 25% 15%;
+    /* Mystic Elven palette - moss green & river blue */
+    --background: 150 15% 96%;
+    --foreground: 200 30% 12%;
 
-    --card: 35 25% 95%;
-    --card-foreground: 220 25% 15%;
+    --card: 150 12% 94%;
+    --card-foreground: 200 30% 12%;
 
-    --popover: 35 25% 95%;
-    --popover-foreground: 220 25% 15%;
+    --popover: 150 12% 94%;
+    --popover-foreground: 200 30% 12%;
 
-    /* Terracotta/Desert primary */
-    --primary: 18 65% 55%;
-    --primary-foreground: 35 30% 97%;
+    /* Moss green primary */
+    --primary: 150 35% 38%;
+    --primary-foreground: 150 15% 96%;
 
-    /* Cosmic blue secondary */
-    --secondary: 210 45% 65%;
-    --secondary-foreground: 220 25% 15%;
+    /* River blue secondary */
+    --secondary: 195 50% 50%;
+    --secondary-foreground: 200 30% 12%;
 
-    /* Sand muted */
-    --muted: 38 30% 88%;
-    --muted-foreground: 220 15% 40%;
+    /* Forest muted */
+    --muted: 150 15% 88%;
+    --muted-foreground: 200 15% 40%;
 
-    /* Ethereal accent */
-    --accent: 340 35% 70%;
-    --accent-foreground: 220 25% 15%;
+    /* Elven gold accent */
+    --accent: 42 55% 58%;
+    --accent-foreground: 200 30% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 38 25% 85%;
-    --input: 38 25% 85%;
-    --ring: 18 65% 55%;
+    --border: 150 15% 85%;
+    --input: 150 15% 85%;
+    --ring: 150 35% 38%;
 
     --radius: 0.75rem;
 
-    /* Custom Moebius colors */
-    --cosmic-blue: 210 55% 50%;
-    --desert-orange: 25 70% 60%;
-    --pale-pink: 340 30% 80%;
-    --sand-light: 40 35% 92%;
-    --terracotta-deep: 15 55% 45%;
-    --sky-gradient-start: 200 60% 85%;
-    --sky-gradient-end: 35 40% 95%;
+    /* Custom mystic colors */
+    --cosmic-blue: 195 55% 45%;
+    --desert-orange: 42 55% 58%;
+    --pale-pink: 170 25% 75%;
+    --sand-light: 150 15% 92%;
+    --terracotta-deep: 150 40% 30%;
+    --sky-gradient-start: 195 40% 88%;
+    --sky-gradient-end: 150 20% 94%;
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--sky-gradient-start)) 0%, hsl(var(--sky-gradient-end)) 50%, hsl(var(--pale-pink)) 100%);
     --gradient-card: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--sand-light)) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--desert-orange)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--cosmic-blue)) 100%);
 
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.15);
@@ -74,38 +74,38 @@
   }
 
   .dark {
-    --background: 220 25% 8%;
-    --foreground: 35 30% 95%;
+    --background: 200 30% 7%;
+    --foreground: 150 15% 92%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 35 30% 95%;
+    --card: 200 25% 11%;
+    --card-foreground: 150 15% 92%;
 
-    --popover: 220 20% 12%;
-    --popover-foreground: 35 30% 95%;
+    --popover: 200 25% 11%;
+    --popover-foreground: 150 15% 92%;
 
-    --primary: 18 65% 55%;
-    --primary-foreground: 35 30% 97%;
+    --primary: 150 35% 42%;
+    --primary-foreground: 150 15% 96%;
 
-    --secondary: 210 45% 55%;
-    --secondary-foreground: 35 30% 95%;
+    --secondary: 195 50% 45%;
+    --secondary-foreground: 150 15% 92%;
 
-    --muted: 220 20% 18%;
-    --muted-foreground: 38 25% 65%;
+    --muted: 200 20% 16%;
+    --muted-foreground: 150 20% 60%;
 
-    --accent: 340 35% 60%;
-    --accent-foreground: 35 30% 95%;
+    --accent: 42 50% 50%;
+    --accent-foreground: 150 15% 92%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 18 65% 55%;
+    --border: 200 20% 18%;
+    --input: 200 20% 18%;
+    --ring: 150 35% 42%;
 
-    --cosmic-blue: 210 55% 60%;
-    --desert-orange: 25 70% 55%;
-    --pale-pink: 340 30% 65%;
-    --sand-light: 220 15% 15%;
-    --terracotta-deep: 15 55% 50%;
-    --sky-gradient-start: 220 25% 12%;
-    --sky-gradient-end: 220 20% 8%;
+    --cosmic-blue: 195 55% 55%;
+    --desert-orange: 42 50% 50%;
+    --pale-pink: 170 25% 55%;
+    --sand-light: 200 15% 14%;
+    --terracotta-deep: 150 40% 35%;
+    --sky-gradient-start: 200 25% 11%;
+    --sky-gradient-end: 200 30% 7%;
   }
 }
 

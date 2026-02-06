@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -6,26 +8,27 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
-          <a href="#" className="font-display text-xl font-bold">
-            <span className="text-gradient">Pixel</span>
-            <span className="text-foreground">Verse</span>
-          </a>
+          <Link to="/" className="font-display text-xl font-bold tracking-wider">
+            <span className="text-gradient">MSTACH</span>
+            <span className="text-foreground">.ART</span>
+          </Link>
 
           {/* Copyright */}
           <p className="text-sm text-muted-foreground text-center">
-            © {currentYear} Todos os direitos reservados. 
-            <span className="mx-2">•</span>
-            Inspirado por Moebius
+            © {currentYear} MSTACH.ART — Todos os direitos reservados.
           </p>
 
           {/* Quick Links */}
           <div className="flex items-center gap-6">
-            <a href="#gallery" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/#gallery" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Projetos
-            </a>
-            <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            </Link>
+            <Link to="/games" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Jogos
+            </Link>
+            <Link to="/#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Contato
-            </a>
+            </Link>
           </div>
         </div>
       </div>
