@@ -80,8 +80,8 @@ const About = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold">Stach</h3>
-                  <p className="text-sm text-muted-foreground">Artista Digital</p>
+                  <h3 className="font-display text-xl font-bold">Willian Mstach</h3>
+                  <p className="text-sm text-muted-foreground">MSTACH.ART — Artista Digital</p>
                 </div>
               </div>
               <h3 className="font-display text-xl font-bold mb-6">
@@ -118,14 +118,21 @@ const About = () => {
                 {/* Social Links */}
                 <div>
                   <p className="text-sm text-muted-foreground mb-4">Me encontre nas redes</p>
-                  <div className="flex gap-4">
-                    {["Twitter", "Instagram", "ArtStation", "Behance"].map((social) => (
+                  <div className="flex flex-wrap gap-3">
+                    {[
+                      { label: "Itch.io", href: "https://willianmstach.itch.io/" },
+                      { label: "Instagram", href: "#" },
+                      { label: "ArtStation", href: "#" },
+                      { label: "Twitter", href: "#" },
+                    ].map((social) => (
                       <a
-                        key={social}
-                        href="#"
+                        key={social.label}
+                        href={social.href}
+                        target={social.href.startsWith("http") ? "_blank" : undefined}
+                        rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                         className="px-4 py-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300 text-sm font-medium"
                       >
-                        {social}
+                        {social.label}
                       </a>
                     ))}
                   </div>

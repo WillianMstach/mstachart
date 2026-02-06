@@ -35,7 +35,7 @@ const Hero = () => {
           }`}
         >
           <span className="inline-block px-4 py-2 rounded-full glass-effect text-sm font-medium text-muted-foreground mb-6">
-            Ilustrador & Pixel Artist
+            MSTACH.ART — Ilustrador & Pixel Artist
           </span>
         </div>
 
