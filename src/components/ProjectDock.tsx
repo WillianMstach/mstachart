@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 interface ProjectDockProps {
   activeCategory: string;
   onCategoryChange: (category: string) => void;
@@ -7,9 +9,20 @@ const categories = [
   { id: "concepts", label: "Concepts", icon: "💡" },
   { id: "game-art", label: "Game Art", icon: "🎮" },
   { id: "full-art", label: "Full Art", icon: "🖼️" },
+  { id: "games", label: "Jogos", icon: "🕹️", isLink: true },
 ];
 
 const ProjectDock = ({ activeCategory, onCategoryChange }: ProjectDockProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = (category: typeof categories[0]) => {
+    if (category.isLink) {
+      navigate("/games");
+    } else {
+      onCategoryChange(category.id);
+    }
+  };
+
   return (
     <div className="sticky top-4 z-50 flex justify-center py-4">
       <nav className="glass-effect rounded-full p-2 shadow-soft">
@@ -17,9 +30,9 @@ const ProjectDock = ({ activeCategory, onCategoryChange }: ProjectDockProps) => 
           {categories.map((category) => (
             <li key={category.id}>
               <button
-                onClick={() => onCategoryChange(category.id)}
+                onClick={() => handleClick(category)}
                 className={`dock-item flex items-center gap-2 font-medium ${
-                  activeCategory === category.id ? "active" : ""
+                  !category.isLink && activeCategory === category.id ? "active" : ""
                 }`}
               >
                 <span className="text-lg">{category.icon}</span>
