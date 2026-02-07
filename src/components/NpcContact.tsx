@@ -15,8 +15,8 @@ const NpcContact = () => {
         </div>
 
         {/* Info Box - other half */}
-        <div className="relative w-full md:w-1/2 px-6 md:px-12 py-8 md:py-16 flex items-center">
-          <div className="w-full max-w-md">
+        <div className="relative w-full md:w-1/2 px-6 md:px-12 py-8 md:py-16 flex items-center justify-center md:justify-start">
+          <div className="w-full max-w-md bg-card rounded-2xl border-2 border-primary/20 p-6 md:p-8 shadow-soft">
             {/* Name & Title */}
             <div className="mb-5">
               <h3 className="font-display text-2xl font-bold">Willian Mstach</h3>
