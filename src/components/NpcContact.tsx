@@ -4,13 +4,13 @@ import npcContact from "@/assets/npc-contact.png";
 const NpcContact = () => {
   return (
     <section id="contact" className="relative px-0 pb-0 pt-0 overflow-hidden bg-muted/20">
-      <div className="flex flex-col md:flex-row items-end gap-0 min-h-[500px] lg:min-h-[600px]">
-        {/* NPC Character - half screen */}
-        <div className="flex-shrink-0 w-full md:w-1/2 self-end flex justify-center md:justify-end">
+      <div className="flex flex-col md:flex-row items-end gap-0 min-h-[70vh]">
+        {/* NPC Character - half screen, huge */}
+        <div className="w-full md:w-1/2 self-end flex justify-center md:justify-end">
           <img
             src={npcContact}
             alt="Willian Mstach NPC"
-            className="w-full max-w-2xl h-auto object-contain drop-shadow-2xl"
+            className="w-[90%] md:w-full lg:max-w-[600px] h-auto object-contain drop-shadow-2xl"
           />
         </div>
 
