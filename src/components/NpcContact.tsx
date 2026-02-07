@@ -3,35 +3,20 @@ import npcContact from "@/assets/npc-contact.png";
 
 const NpcContact = () => {
   return (
-    <section id="contact" className="relative px-6 pb-0 pt-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-end gap-0">
-        {/* NPC Character - large, like a game dialog */}
-        <div className="flex-shrink-0 w-64 md:w-80 lg:w-[420px] z-10 self-end">
+    <section id="contact" className="relative px-0 pb-0 pt-0 overflow-hidden bg-muted/20">
+      <div className="flex flex-col md:flex-row items-end gap-0 min-h-[500px] lg:min-h-[600px]">
+        {/* NPC Character - half screen */}
+        <div className="flex-shrink-0 w-full md:w-1/2 self-end flex justify-center md:justify-end">
           <img
             src={npcContact}
             alt="Willian Mstach NPC"
-            className="w-full h-auto object-contain drop-shadow-2xl"
+            className="w-full max-w-2xl h-auto object-contain drop-shadow-2xl"
           />
         </div>
 
-        {/* Info Box - speech bubble style */}
-        <div className="relative flex-1 max-w-lg mb-8 md:mb-16 -ml-4 md:-ml-8">
-          {/* Bubble tail */}
-          <div className="absolute left-0 bottom-8 -translate-x-3 w-6 h-6 z-0 hidden md:block">
-            <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-              <path
-                d="M24 0C24 0 8 4 0 24C4 16 12 12 24 12V0Z"
-                className="fill-card"
-              />
-              <path
-                d="M24 0C24 0 8 4 0 24C4 16 12 12 24 12"
-                className="stroke-primary/30"
-                strokeWidth="2"
-              />
-            </svg>
-          </div>
-
-          <div className="relative bg-card rounded-2xl border-2 border-primary/20 p-6 md:p-8 shadow-soft">
+        {/* Info Box - other half */}
+        <div className="relative w-full md:w-1/2 px-6 md:px-12 py-8 md:py-16 flex items-center">
+          <div className="w-full max-w-md">
             {/* Name & Title */}
             <div className="mb-5">
               <h3 className="font-display text-2xl font-bold">Willian Mstach</h3>
