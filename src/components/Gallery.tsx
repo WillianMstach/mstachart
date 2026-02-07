@@ -29,55 +29,55 @@ const projects: Project[] = [
     title: "Desert Wanderer",
     description: "Character concept for a desert-themed RPG. Inspired by nomadic cultures and sci-fi aesthetics.",
     category: "Concepts",
-    categoryId: "concepts",
+    categoryId: "illustrations",
   },
   {
     id: "2",
     image: concept2,
     title: "Biomech Entity",
     description: "Creature design exploring the fusion of organic and mechanical elements.",
-    category: "Concepts",
-    categoryId: "concepts",
+    category: "Ilustrações",
+    categoryId: "illustrations",
   },
   {
     id: "3",
     image: gameArt1,
     title: "Crystal Citadel",
     description: "Environment art for a fantasy adventure game. Floating palace in an ethereal realm.",
-    category: "Game Art",
-    categoryId: "game-art",
+    category: "Character Design",
+    categoryId: "character-design",
   },
   {
     id: "4",
     image: gameArt2,
     title: "Ancient Ruins",
     description: "Temple environment design with mystical atmosphere and ancient architecture.",
-    category: "Game Art",
-    categoryId: "game-art",
+    category: "Character Design",
+    categoryId: "character-design",
   },
   {
     id: "5",
     image: fullArt1,
     title: "Path of the Seeker",
     description: "Full illustration depicting a lone traveler discovering ancient monuments in an alien desert.",
-    category: "Full Art",
-    categoryId: "full-art",
+    category: "Pixel Art",
+    categoryId: "pixel-art",
   },
   {
     id: "6",
     image: fullArt2,
     title: "Cosmic Voyage",
     description: "Space exploration scene with surreal nebula and mysterious spacecraft.",
-    category: "Full Art",
-    categoryId: "full-art",
+    category: "Concepts",
+    categoryId: "concepts",
   },
   {
     id: "7",
     image: gameArt1,
     title: "FlappyBat",
     description: "Versão do clássico Flappy Bird com arte original e pixel art. Jogue no navegador!",
-    category: "Jogos",
-    categoryId: "games",
+    category: "Game Dev",
+    categoryId: "game-dev",
     isLink: true,
   },
   {
@@ -85,15 +85,15 @@ const projects: Project[] = [
     image: gameArt2,
     title: "Hollow Depths",
     description: "Metroidvania em pixel art com cavernas subterrâneas e criaturas místicas.",
-    category: "Jogos",
-    categoryId: "games",
+    category: "Game Dev",
+    categoryId: "game-dev",
     isLink: true,
   },
 ];
 
 const Gallery = () => {
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState("concepts");
+  const [activeCategory, setActiveCategory] = useState("illustrations");
   const [displayedProjects, setDisplayedProjects] = useState<Project[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
