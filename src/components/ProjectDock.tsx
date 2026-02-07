@@ -6,10 +6,11 @@ interface ProjectDockProps {
 }
 
 const categories = [
+  { id: "illustrations", label: "Ilustrações", icon: "🎨" },
+  { id: "character-design", label: "Character Design", icon: "👤" },
+  { id: "pixel-art", label: "Pixel Art", icon: "🕹️" },
   { id: "concepts", label: "Concepts", icon: "💡" },
-  { id: "game-art", label: "Game Art", icon: "🎮" },
-  { id: "full-art", label: "Full Art", icon: "🖼️" },
-  { id: "games", label: "Jogos", icon: "🕹️" },
+  { id: "game-dev", label: "Game Dev", icon: "🎮" },
 ];
 
 const ProjectDock = ({ activeCategory, onCategoryChange }: ProjectDockProps) => {
@@ -18,9 +19,9 @@ const ProjectDock = ({ activeCategory, onCategoryChange }: ProjectDockProps) => 
   };
 
   return (
-    <div className="sticky top-4 z-50 flex justify-center py-4">
-      <nav className="glass-effect rounded-full p-2 shadow-soft">
-        <ul className="flex items-center gap-2">
+    <div className="sticky top-4 z-50 w-full py-4">
+      <nav className="glass-effect rounded-full p-2 shadow-soft w-full">
+        <ul className="flex items-center justify-between w-full">
           {categories.map((category) => (
             <li key={category.id}>
               <button

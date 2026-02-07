@@ -1,4 +1,4 @@
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Instagram, Linkedin, Youtube, Twitter, Gamepad2 } from "lucide-react";
 import npcContact from "@/assets/npc-contact.png";
 
 const NpcContact = () => {
@@ -50,21 +50,23 @@ const NpcContact = () => {
             {/* Social Links */}
             <div className="mb-5">
               <p className="text-xs text-muted-foreground mb-3">Me encontre nas redes</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 {[
-                  { label: "Itch.io", href: "https://willianmstach.itch.io/" },
-                  { label: "Instagram", href: "#" },
-                  { label: "ArtStation", href: "#" },
-                  { label: "Twitter", href: "#" },
+                  { label: "Instagram", href: "#", icon: Instagram },
+                  { label: "LinkedIn", href: "#", icon: Linkedin },
+                  { label: "YouTube", href: "#", icon: Youtube },
+                  { label: "Itch.io", href: "https://willianmstach.itch.io/", icon: Gamepad2 },
+                  { label: "Twitter", href: "#", icon: Twitter },
                 ].map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target={social.href.startsWith("http") ? "_blank" : undefined}
                     rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="px-3 py-1.5 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300 text-xs font-medium"
+                    className="p-2.5 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                    title={social.label}
                   >
-                    {social.label}
+                    <social.icon className="w-4 h-4" />
                   </a>
                 ))}
               </div>
