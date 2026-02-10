@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ProjectDock from "./ProjectDock";
 import ProjectCard from "./ProjectCard";
@@ -19,7 +19,8 @@ interface Project {
   description: string;
   category: string;
   categoryId: string;
-  isLink?: boolean;
+  subcategoryId: string;
+  parallaxSpeed?: number;
 }
 
 const projects: Project[] = [
@@ -28,82 +29,87 @@ const projects: Project[] = [
     image: concept1,
     title: "Desert Wanderer",
     description: "Character concept for a desert-themed RPG. Inspired by nomadic cultures and sci-fi aesthetics.",
-    category: "Concepts",
+    category: "Cenários",
     categoryId: "illustrations",
+    subcategoryId: "cenarios",
+    parallaxSpeed: 0.3,
   },
   {
     id: "2",
     image: concept2,
     title: "Biomech Entity",
     description: "Creature design exploring the fusion of organic and mechanical elements.",
-    category: "Ilustrações",
+    category: "Personagens",
     categoryId: "illustrations",
+    subcategoryId: "personagens",
+    parallaxSpeed: 0.5,
   },
   {
     id: "3",
     image: gameArt1,
     title: "Crystal Citadel",
     description: "Environment art for a fantasy adventure game. Floating palace in an ethereal realm.",
-    category: "Character Design",
-    categoryId: "character-design",
+    category: "Personagens",
+    categoryId: "pixel-art",
+    subcategoryId: "px-personagens",
+    parallaxSpeed: 0.4,
   },
   {
     id: "4",
     image: gameArt2,
     title: "Ancient Ruins",
     description: "Temple environment design with mystical atmosphere and ancient architecture.",
-    category: "Character Design",
-    categoryId: "character-design",
+    category: "Full Art",
+    categoryId: "pixel-art",
+    subcategoryId: "px-full-art",
+    parallaxSpeed: 0.6,
   },
   {
     id: "5",
     image: fullArt1,
     title: "Path of the Seeker",
     description: "Full illustration depicting a lone traveler discovering ancient monuments in an alien desert.",
-    category: "Pixel Art",
-    categoryId: "pixel-art",
+    category: "Cenário",
+    categoryId: "concepts",
+    subcategoryId: "concept-cenario",
+    parallaxSpeed: 0.35,
   },
   {
     id: "6",
     image: fullArt2,
     title: "Cosmic Voyage",
     description: "Space exploration scene with surreal nebula and mysterious spacecraft.",
-    category: "Concepts",
+    category: "Props",
     categoryId: "concepts",
-  },
-  {
-    id: "7",
-    image: gameArt1,
-    title: "FlappyBat",
-    description: "Versão do clássico Flappy Bird com arte original e pixel art. Jogue no navegador!",
-    category: "Game Dev",
-    categoryId: "game-dev",
-    isLink: true,
-  },
-  {
-    id: "8",
-    image: gameArt2,
-    title: "Hollow Depths",
-    description: "Metroidvania em pixel art com cavernas subterrâneas e criaturas místicas.",
-    category: "Game Dev",
-    categoryId: "game-dev",
-    isLink: true,
+    subcategoryId: "concept-props",
+    parallaxSpeed: 0.55,
   },
 ];
 
 const Gallery = () => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("illustrations");
+  const [activeSubcategory, setActiveSubcategory] = useState("cenarios");
   const [displayedProjects, setDisplayedProjects] = useState<Project[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  // Parallax scroll listener
+  useEffect(() => {
+    const handleScroll = () => {
+      if (galleryRef.current) {
+        const rect = galleryRef.current.getBoundingClientRect();
+        setScrollY(-rect.top);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleProjectClick = (project: Project) => {
-    if (project.isLink) {
-      navigate("/games");
-      return;
-    }
     const index = displayedProjects.findIndex((p) => p.id === project.id);
     if (index !== -1) {
       setCurrentImageIndex(index);
@@ -113,18 +119,20 @@ const Gallery = () => {
 
   useEffect(() => {
     setIsTransitioning(true);
-    
+
     const timer = setTimeout(() => {
-      const filtered = projects.filter((p) => p.categoryId === activeCategory);
+      const filtered = projects.filter(
+        (p) => p.categoryId === activeCategory && p.subcategoryId === activeSubcategory
+      );
       setDisplayedProjects(filtered);
       setIsTransitioning(false);
-    }, 300);
+    }, 350);
 
     return () => clearTimeout(timer);
-  }, [activeCategory]);
+  }, [activeCategory, activeSubcategory]);
 
   return (
-    <section id="gallery" className="py-20 px-6">
+    <section id="gallery" className="py-20 px-6" ref={galleryRef}>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -132,7 +140,7 @@ const Gallery = () => {
             <span className="text-gradient">Meus</span> Projetos
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Uma coleção de ilustrações e pixel art explorando mundos fantásticos, 
+            Uma coleção de ilustrações e pixel art explorando mundos fantásticos,
             personagens únicos e ambientes surreais.
           </p>
         </div>
@@ -140,25 +148,34 @@ const Gallery = () => {
         {/* Dock Navigation */}
         <ProjectDock
           activeCategory={activeCategory}
+          activeSubcategory={activeSubcategory}
           onCategoryChange={setActiveCategory}
+          onSubcategoryChange={setActiveSubcategory}
         />
 
-        {/* Projects Grid */}
+        {/* Projects Grid with fade transition */}
         <div
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 transition-opacity duration-300 ${
-            isTransitioning ? "opacity-0" : "opacity-100"
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 transition-all duration-500 ease-in-out ${
+            isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
           }`}
         >
           {displayedProjects.map((project, index) => (
-            <ProjectCard
+            <div
               key={project.id}
-              image={project.image}
-              title={project.title}
-              description={project.description}
-              category={project.category}
-              delay={index * 100}
-              onClick={() => handleProjectClick(project)}
-            />
+              style={{
+                transform: `translateY(${scrollY * (project.parallaxSpeed || 0.3) * 0.1}px)`,
+                transition: "transform 0.1s linear",
+              }}
+            >
+              <ProjectCard
+                image={project.image}
+                title={project.title}
+                description={project.description}
+                category={project.category}
+                delay={index * 120}
+                onClick={() => handleProjectClick(project)}
+              />
+            </div>
           ))}
         </div>
 
@@ -166,7 +183,7 @@ const Gallery = () => {
         {displayedProjects.length === 0 && !isTransitioning && (
           <div className="text-center py-20">
             <p className="text-muted-foreground">
-              Nenhum projeto encontrado nesta categoria.
+              Nenhum projeto encontrado nesta subcategoria.
             </p>
           </div>
         )}
