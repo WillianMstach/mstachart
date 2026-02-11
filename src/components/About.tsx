@@ -1,9 +1,10 @@
-import { Palette, Gamepad2, Sparkles } from "lucide-react";
+import { Palette, Gamepad2, Sparkles, Joystick } from "lucide-react";
 
 const skills = [
   { icon: Palette, label: "Ilustração Digital", description: "Concept art e character design" },
   { icon: Gamepad2, label: "Pixel Art", description: "Sprites e ambientes para games" },
   { icon: Sparkles, label: "Arte Conceitual", description: "Mundos e criaturas fantásticas" },
+  { icon: Joystick, label: "Game Design", description: "Mecânicas e experiências interativas" },
 ];
 
 const About = () => {
@@ -31,7 +32,7 @@ const About = () => {
         </div>
 
         {/* Skills */}
-        <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {skills.map((skill, index) => (
             <div
               key={skill.label}
