@@ -15,7 +15,7 @@ const ProjectCard = ({ image, title, description, category, delay = 0, onClick }
 
   return (
     <article
-      className="group relative overflow-hidden rounded-xl card-gradient shadow-soft animate-scale-in cursor-pointer"
+      className="group relative overflow-hidden rounded-xl card-gradient shadow-soft animate-scale-in cursor-pointer ink-border"
       style={{ animationDelay: `${delay}ms` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

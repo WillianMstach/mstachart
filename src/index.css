@@ -6,106 +6,110 @@
 
 @layer base {
   :root {
-    /* Mystic Elven palette - moss green & river blue */
-    --background: 150 15% 96%;
-    --foreground: 200 30% 12%;
+    /* Warm illustrative palette — inspired by MSTACH character */
+    --background: 35 25% 95%;
+    --foreground: 220 35% 15%;
 
-    --card: 150 12% 94%;
-    --card-foreground: 200 30% 12%;
+    --card: 35 20% 92%;
+    --card-foreground: 220 35% 15%;
 
-    --popover: 150 12% 94%;
-    --popover-foreground: 200 30% 12%;
+    --popover: 35 20% 92%;
+    --popover-foreground: 220 35% 15%;
 
-    /* Moss green primary */
-    --primary: 150 35% 38%;
-    --primary-foreground: 150 15% 96%;
+    /* Olive green primary (shirt) */
+    --primary: 80 30% 32%;
+    --primary-foreground: 35 25% 95%;
 
-    /* River blue secondary */
-    --secondary: 195 50% 50%;
-    --secondary-foreground: 200 30% 12%;
+    /* Warm brown secondary (flannel/beard) */
+    --secondary: 20 45% 38%;
+    --secondary-foreground: 35 25% 95%;
 
-    /* Forest muted */
-    --muted: 150 15% 88%;
-    --muted-foreground: 200 15% 40%;
+    /* Warm muted */
+    --muted: 35 18% 86%;
+    --muted-foreground: 220 15% 40%;
 
-    /* Elven gold accent */
-    --accent: 42 55% 58%;
-    --accent-foreground: 200 30% 12%;
+    /* Rust/terracotta accent */
+    --accent: 15 55% 45%;
+    --accent-foreground: 35 25% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 150 15% 85%;
-    --input: 150 15% 85%;
-    --ring: 150 35% 38%;
+    --border: 30 15% 78%;
+    --input: 30 15% 78%;
+    --ring: 80 30% 32%;
 
     --radius: 0.75rem;
 
-    /* Custom mystic colors */
-    --cosmic-blue: 195 55% 45%;
-    --desert-orange: 42 55% 58%;
-    --pale-pink: 170 25% 75%;
-    --sand-light: 150 15% 92%;
-    --terracotta-deep: 150 40% 30%;
-    --sky-gradient-start: 195 40% 88%;
-    --sky-gradient-end: 150 20% 94%;
+    /* Custom illustrative colors */
+    --ink-dark: 220 40% 18%;
+    --beanie-navy: 220 35% 28%;
+    --flannel-brown: 20 45% 38%;
+    --olive-shirt: 80 30% 32%;
+    --warm-cream: 35 30% 90%;
+    --skin-warm: 25 40% 72%;
+    --rust-deep: 15 55% 35%;
+    --sky-gradient-start: 30 20% 88%;
+    --sky-gradient-end: 35 15% 93%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--sky-gradient-start)) 0%, hsl(var(--sky-gradient-end)) 50%, hsl(var(--pale-pink)) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--sand-light)) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--cosmic-blue)) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--sky-gradient-start)) 0%, hsl(var(--warm-cream)) 50%, hsl(var(--sky-gradient-end)) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--warm-cream)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--olive-shirt)) 0%, hsl(var(--beanie-navy)) 100%);
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.15);
-    --shadow-glow: 0 0 40px -10px hsl(var(--cosmic-blue) / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--ink-dark) / 0.12);
+    --shadow-glow: 0 0 40px -10px hsl(var(--olive-shirt) / 0.25);
 
     /* Fonts */
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Outfit', sans-serif;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 35 20% 96%;
+    --sidebar-foreground: 220 30% 20%;
+    --sidebar-primary: 220 35% 15%;
+    --sidebar-primary-foreground: 35 25% 95%;
+    --sidebar-accent: 35 18% 90%;
+    --sidebar-accent-foreground: 220 35% 15%;
+    --sidebar-border: 30 15% 85%;
+    --sidebar-ring: 80 30% 32%;
   }
 
   .dark {
-    --background: 200 30% 7%;
-    --foreground: 150 15% 92%;
+    --background: 220 30% 8%;
+    --foreground: 35 20% 90%;
 
-    --card: 200 25% 11%;
-    --card-foreground: 150 15% 92%;
+    --card: 220 25% 12%;
+    --card-foreground: 35 20% 90%;
 
-    --popover: 200 25% 11%;
-    --popover-foreground: 150 15% 92%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 35 20% 90%;
 
-    --primary: 150 35% 42%;
-    --primary-foreground: 150 15% 96%;
+    --primary: 80 30% 40%;
+    --primary-foreground: 35 25% 95%;
 
-    --secondary: 195 50% 45%;
-    --secondary-foreground: 150 15% 92%;
+    --secondary: 20 40% 42%;
+    --secondary-foreground: 35 20% 90%;
 
-    --muted: 200 20% 16%;
-    --muted-foreground: 150 20% 60%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 35 15% 55%;
 
-    --accent: 42 50% 50%;
-    --accent-foreground: 150 15% 92%;
+    --accent: 15 50% 48%;
+    --accent-foreground: 35 20% 90%;
 
-    --border: 200 20% 18%;
-    --input: 200 20% 18%;
-    --ring: 150 35% 42%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 80 30% 40%;
 
-    --cosmic-blue: 195 55% 55%;
-    --desert-orange: 42 50% 50%;
-    --pale-pink: 170 25% 55%;
-    --sand-light: 200 15% 14%;
-    --terracotta-deep: 150 40% 35%;
-    --sky-gradient-start: 200 25% 11%;
-    --sky-gradient-end: 200 30% 7%;
+    --ink-dark: 220 40% 12%;
+    --beanie-navy: 220 35% 35%;
+    --flannel-brown: 20 40% 42%;
+    --olive-shirt: 80 30% 38%;
+    --warm-cream: 35 15% 16%;
+    --skin-warm: 25 30% 50%;
+    --rust-deep: 15 50% 40%;
+    --sky-gradient-start: 220 25% 12%;
+    --sky-gradient-end: 220 30% 8%;
   }
 }
 
@@ -153,20 +157,28 @@
   }
 
   .glass-effect {
-    @apply backdrop-blur-md bg-background/70 border border-border/50;
+    @apply backdrop-blur-md bg-background/70 border-2 border-foreground/10;
   }
 
   .dock-item {
     @apply relative px-6 py-3 rounded-full transition-all duration-300 cursor-pointer;
     @apply hover:bg-primary/10 hover:scale-105;
+    border: 2px solid transparent;
+  }
+
+  .dock-item:hover {
+    border-color: hsl(var(--ink-dark) / 0.2);
   }
 
   .dock-item.active {
     @apply bg-primary text-primary-foreground;
+    border-color: hsl(var(--ink-dark) / 0.4);
   }
 
   .image-reveal {
     @apply overflow-hidden;
+    border: 2px solid hsl(var(--ink-dark) / 0.15);
+    border-radius: 0.75rem;
   }
 
   .image-reveal img {
@@ -175,6 +187,45 @@
 
   .image-reveal:hover img {
     @apply scale-110;
+  }
+
+  /* Illustrative ink-line decorations */
+  .ink-border {
+    border: 2.5px solid hsl(var(--ink-dark) / 0.25);
+    border-radius: 1rem;
+    position: relative;
+  }
+
+  .ink-border::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 1.5px solid hsl(var(--ink-dark) / 0.08);
+    border-radius: 1.2rem;
+    pointer-events: none;
+  }
+
+  .sketch-line {
+    position: relative;
+  }
+
+  .sketch-line::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2.5px;
+    background: hsl(var(--ink-dark) / 0.2);
+    border-radius: 2px;
+  }
+
+  .ink-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: hsl(var(--ink-dark) / 0.2);
+    display: inline-block;
   }
 }
 
