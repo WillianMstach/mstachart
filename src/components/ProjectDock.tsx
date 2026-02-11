@@ -95,7 +95,7 @@ const ProjectDock = ({
   };
 
   return (
-    <div className="sticky top-4 z-50 w-full py-4 space-y-3">
+    <div className="sticky top-4 z-40 w-full py-4 space-y-3">
       {/* Main Categories */}
       <nav className="glass-effect rounded-full p-2 shadow-soft w-full">
         <ul className="flex items-center justify-between w-full">
