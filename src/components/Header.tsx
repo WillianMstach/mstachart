@@ -24,11 +24,12 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
     setIsMobileMenuOpen(false);
     if (href.startsWith("/#")) {
       const id = href.slice(2);
       if (location.pathname === "/") {
+        e.preventDefault();
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }
     }
@@ -54,7 +55,7 @@ const Header = () => {
               <Link
                 key={link.label}
                 to={link.href}
-                onClick={() => handleNavClick(link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="relative font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 group"
               >
                 {link.label}
@@ -73,7 +74,7 @@ const Header = () => {
           )}
           <Link
             to="/#about"
-            onClick={() => handleNavClick("/#about")}
+            onClick={(e) => handleNavClick(e, "/#about")}
             className="px-6 py-2.5 accent-gradient text-primary-foreground rounded-full font-medium shadow-soft hover:scale-105 transition-transform duration-300"
           >
             Contato
@@ -103,10 +104,10 @@ const Header = () => {
       >
         <nav className="flex flex-col p-6 gap-4">
           {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              to={link.href}
-              onClick={() => handleNavClick(link.href)}
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
               className="font-medium text-lg py-2 border-b border-border/50 hover:text-primary transition-colors"
             >
               {link.label}
@@ -114,7 +115,7 @@ const Header = () => {
           ))}
           <Link
             to="/#about"
-            onClick={() => handleNavClick("/#about")}
+            onClick={(e) => handleNavClick(e, "/#about")}
             className="mt-2 px-6 py-3 accent-gradient text-primary-foreground rounded-full font-medium text-center"
           >
             Contato
