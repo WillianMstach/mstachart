@@ -6,110 +6,73 @@
 
 @layer base {
   :root {
-    /* Warm illustrative palette — inspired by MSTACH character */
-    --background: 35 25% 95%;
-    --foreground: 220 35% 15%;
+    /* Dark portfolio palette — snakepixel-inspired */
+    --background: 0 0% 7%;
+    --foreground: 35 20% 90%;
 
-    --card: 35 20% 92%;
-    --card-foreground: 220 35% 15%;
+    --card: 0 0% 10%;
+    --card-foreground: 35 20% 90%;
 
-    --popover: 35 20% 92%;
-    --popover-foreground: 220 35% 15%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 35 20% 90%;
 
-    /* Olive green primary (shirt) */
-    --primary: 80 30% 32%;
-    --primary-foreground: 35 25% 95%;
+    /* Olive green primary (from character) */
+    --primary: 80 30% 40%;
+    --primary-foreground: 0 0% 98%;
 
     /* Warm brown secondary (flannel/beard) */
-    --secondary: 20 45% 38%;
-    --secondary-foreground: 35 25% 95%;
+    --secondary: 20 40% 42%;
+    --secondary-foreground: 0 0% 98%;
 
-    /* Warm muted */
-    --muted: 35 18% 86%;
-    --muted-foreground: 220 15% 40%;
+    /* Muted dark */
+    --muted: 0 0% 14%;
+    --muted-foreground: 35 10% 55%;
 
     /* Rust/terracotta accent */
-    --accent: 15 55% 45%;
-    --accent-foreground: 35 25% 95%;
+    --accent: 15 55% 48%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 30 15% 78%;
-    --input: 30 15% 78%;
-    --ring: 80 30% 32%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 80 30% 40%;
 
     --radius: 0.75rem;
 
     /* Custom illustrative colors */
-    --ink-dark: 220 40% 18%;
-    --beanie-navy: 220 35% 28%;
-    --flannel-brown: 20 45% 38%;
-    --olive-shirt: 80 30% 32%;
-    --warm-cream: 35 30% 90%;
-    --skin-warm: 25 40% 72%;
-    --rust-deep: 15 55% 35%;
-    --sky-gradient-start: 30 20% 88%;
-    --sky-gradient-end: 35 15% 93%;
-
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--sky-gradient-start)) 0%, hsl(var(--warm-cream)) 50%, hsl(var(--sky-gradient-end)) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--warm-cream)) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(var(--olive-shirt)) 0%, hsl(var(--beanie-navy)) 100%);
-
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(var(--ink-dark) / 0.12);
-    --shadow-glow: 0 0 40px -10px hsl(var(--olive-shirt) / 0.25);
-
-    /* Fonts */
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'Outfit', sans-serif;
-
-    --sidebar-background: 35 20% 96%;
-    --sidebar-foreground: 220 30% 20%;
-    --sidebar-primary: 220 35% 15%;
-    --sidebar-primary-foreground: 35 25% 95%;
-    --sidebar-accent: 35 18% 90%;
-    --sidebar-accent-foreground: 220 35% 15%;
-    --sidebar-border: 30 15% 85%;
-    --sidebar-ring: 80 30% 32%;
-  }
-
-  .dark {
-    --background: 220 30% 8%;
-    --foreground: 35 20% 90%;
-
-    --card: 220 25% 12%;
-    --card-foreground: 35 20% 90%;
-
-    --popover: 220 25% 12%;
-    --popover-foreground: 35 20% 90%;
-
-    --primary: 80 30% 40%;
-    --primary-foreground: 35 25% 95%;
-
-    --secondary: 20 40% 42%;
-    --secondary-foreground: 35 20% 90%;
-
-    --muted: 220 20% 18%;
-    --muted-foreground: 35 15% 55%;
-
-    --accent: 15 50% 48%;
-    --accent-foreground: 35 20% 90%;
-
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 80 30% 40%;
-
-    --ink-dark: 220 40% 12%;
+    --ink-dark: 0 0% 90%;
     --beanie-navy: 220 35% 35%;
     --flannel-brown: 20 40% 42%;
     --olive-shirt: 80 30% 38%;
     --warm-cream: 35 15% 16%;
     --skin-warm: 25 30% 50%;
     --rust-deep: 15 50% 40%;
-    --sky-gradient-start: 220 25% 12%;
-    --sky-gradient-end: 220 30% 8%;
+    --sky-gradient-start: 0 0% 10%;
+    --sky-gradient-end: 0 0% 7%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(0 0% 10%) 50%, hsl(0 0% 7%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 11%) 0%, hsl(0 0% 8%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(80 30% 38%) 0%, hsl(15 50% 40%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 30px -4px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 40px -10px hsl(80 30% 38% / 0.2);
+
+    /* Fonts */
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+
+    --sidebar-background: 0 0% 9%;
+    --sidebar-foreground: 35 20% 90%;
+    --sidebar-primary: 35 20% 90%;
+    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 35 20% 90%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 80 30% 40%;
   }
 }
 
@@ -157,28 +120,29 @@
   }
 
   .glass-effect {
-    @apply backdrop-blur-md bg-background/70 border-2 border-foreground/10;
+    @apply backdrop-blur-md border border-foreground/10;
+    background: hsl(0 0% 7% / 0.85);
   }
 
   .dock-item {
     @apply relative px-6 py-3 rounded-full transition-all duration-300 cursor-pointer;
-    @apply hover:bg-primary/10 hover:scale-105;
-    border: 2px solid transparent;
+    @apply hover:bg-foreground/5 hover:scale-105;
+    border: 1px solid transparent;
   }
 
   .dock-item:hover {
-    border-color: hsl(var(--ink-dark) / 0.2);
+    border-color: hsl(0 0% 100% / 0.1);
   }
 
   .dock-item.active {
     @apply bg-primary text-primary-foreground;
-    border-color: hsl(var(--ink-dark) / 0.4);
+    border-color: hsl(0 0% 100% / 0.15);
   }
 
   .image-reveal {
     @apply overflow-hidden;
-    border: 2px solid hsl(var(--ink-dark) / 0.15);
-    border-radius: 0.75rem;
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    border-radius: 0.5rem;
   }
 
   .image-reveal img {
@@ -189,19 +153,19 @@
     @apply scale-110;
   }
 
-  /* Illustrative ink-line decorations */
+  /* Subtle ink-line decorations (dark theme adapted) */
   .ink-border {
-    border: 2.5px solid hsl(var(--ink-dark) / 0.25);
-    border-radius: 1rem;
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    border-radius: 0.75rem;
     position: relative;
   }
 
   .ink-border::before {
     content: '';
     position: absolute;
-    inset: -4px;
-    border: 1.5px solid hsl(var(--ink-dark) / 0.08);
-    border-radius: 1.2rem;
+    inset: -3px;
+    border: 1px solid hsl(0 0% 100% / 0.03);
+    border-radius: 1rem;
     pointer-events: none;
   }
 
@@ -215,16 +179,16 @@
     bottom: -4px;
     left: 0;
     right: 0;
-    height: 2.5px;
-    background: hsl(var(--ink-dark) / 0.2);
+    height: 1px;
+    background: hsl(0 0% 100% / 0.1);
     border-radius: 2px;
   }
 
   .ink-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
-    background: hsl(var(--ink-dark) / 0.2);
+    background: hsl(0 0% 100% / 0.15);
     display: inline-block;
   }
 }
@@ -259,40 +223,22 @@
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes imageTransition {
-  0% { opacity: 0; transform: scale(1.1); }
+  0% { opacity: 0; transform: scale(1.05); }
   100% { opacity: 1; transform: scale(1); }
 }
 

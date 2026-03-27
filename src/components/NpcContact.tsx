@@ -3,9 +3,9 @@ import npcContact from "@/assets/npc-contact.png";
 
 const NpcContact = () => {
   return (
-    <section id="contact" className="relative px-0 pb-0 pt-0 overflow-hidden bg-muted/20">
+    <section id="contact" className="relative px-0 pb-0 pt-0 overflow-hidden">
       <div className="flex flex-col md:flex-row items-end gap-0 min-h-[70vh]">
-        {/* NPC Character - half screen, huge */}
+        {/* NPC Character */}
         <div className="w-full md:w-1/2 self-end flex justify-center md:justify-end">
           <img
             src={npcContact}
@@ -14,16 +14,14 @@ const NpcContact = () => {
           />
         </div>
 
-        {/* Info Box - other half */}
+        {/* Info Box */}
         <div className="relative w-full md:w-1/2 px-6 md:px-12 py-8 md:py-16 flex items-center justify-center md:justify-start">
-          <div className="w-full max-w-md bg-card rounded-2xl border-2 border-foreground/15 p-6 md:p-8 shadow-soft ink-border">
-            {/* Name & Title */}
+          <div className="w-full max-w-md bg-card rounded-xl border border-border p-6 md:p-8 shadow-soft">
             <div className="mb-5">
-              <h3 className="font-display text-2xl font-bold">Willian Mstach</h3>
+              <h3 className="font-display text-2xl font-bold text-foreground">Willian Mstach</h3>
               <p className="text-sm text-muted-foreground">MSTACH.ART — Artista Digital & Game Dev</p>
             </div>
 
-            {/* Contact Info */}
             <div className="space-y-3 mb-5">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-full bg-primary/10">
@@ -31,7 +29,7 @@ const NpcContact = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Email</p>
-                  <p className="text-sm font-medium">contato@mstach.art</p>
+                  <p className="text-sm font-medium text-foreground">contato@mstach.art</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -40,14 +38,13 @@ const NpcContact = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Localização</p>
-                  <p className="text-sm font-medium">Brasil</p>
+                  <p className="text-sm font-medium text-foreground">Brasil</p>
                 </div>
               </div>
             </div>
 
             <div className="border-t border-border mb-5" />
 
-            {/* Social Links */}
             <div className="mb-5">
               <p className="text-xs text-muted-foreground mb-3">Me encontre nas redes</p>
               <div className="flex flex-wrap gap-3">
@@ -63,7 +60,7 @@ const NpcContact = () => {
                     href={social.href}
                     target={social.href.startsWith("http") ? "_blank" : undefined}
                     rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="p-2.5 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                    className="p-2.5 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors duration-300 text-muted-foreground"
                     title={social.label}
                   >
                     <social.icon className="w-4 h-4" />
@@ -72,8 +69,7 @@ const NpcContact = () => {
               </div>
             </div>
 
-            {/* CTA */}
-            <button className="w-full py-3 accent-gradient text-primary-foreground rounded-xl font-semibold shadow-soft hover:scale-[1.02] transition-transform duration-300 text-sm">
+            <button className="w-full py-3 accent-gradient text-primary-foreground rounded-lg font-semibold hover:scale-[1.02] transition-transform duration-300 text-sm">
               Enviar Mensagem
             </button>
           </div>
