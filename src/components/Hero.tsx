@@ -1,58 +1,104 @@
-import { useEffect, useState } from "react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { useEffect, useState, useCallback } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+// Import gallery images for the carousel
+import concept1 from "@/assets/concept-1.jpg";
+import concept2 from "@/assets/concept-2.jpg";
+import gameArt1 from "@/assets/game-art-1.jpg";
+import gameArt2 from "@/assets/game-art-2.jpg";
+import fullArt1 from "@/assets/full-art-1.jpg";
+import fullArt2 from "@/assets/full-art-2.jpg";
+
+const slides = [
+  { image: concept1, alt: "Desert Wanderer" },
+  { image: concept2, alt: "Biomech Entity" },
+  { image: gameArt1, alt: "Crystal Citadel" },
+  { image: gameArt2, alt: "Ancient Ruins" },
+  { image: fullArt1, alt: "Path of the Seeker" },
+  { image: fullArt2, alt: "Cosmic Voyage" },
+];
+
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const goTo = useCallback((index: number) => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrent(index);
+      setTimeout(() => setIsTransitioning(false), 600);
+    }, 300);
+  }, [isTransitioning]);
+
+  const next = useCallback(() => {
+    goTo((current + 1) % slides.length);
+  }, [current, goTo]);
+
+  const prev = useCallback(() => {
+    goTo((current - 1 + slides.length) % slides.length);
+  }, [current, goTo]);
+
+  // Auto-advance
   useEffect(() => {
-    setIsVisible(true);
-  }, []);
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="Hero background" className={`w-full h-full object-cover transition-all duration-1000 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-110"}`} />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
-      </div>
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
 
-      {/* Floating Geometric Elements */}
-      <div className="absolute top-20 left-10 w-16 h-16 border-2 border-primary/30 rotate-45 animate-float" />
-      <div className="absolute bottom-32 right-20 w-24 h-24 border-2 border-secondary/30 rounded-full animate-float" style={{
-      animationDelay: "2s"
-    }} />
-      <div className="absolute top-1/3 right-10 w-12 h-12 bg-accent/20 rotate-12 animate-float" style={{
-      animationDelay: "4s"
-    }} />
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <div className={`transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <span className="inline-block px-4 py-2 rounded-full glass-effect text-sm font-medium text-muted-foreground mb-6">
-            MSTACH.ART — Ilustrador & Pixel Artist
-          </span>
+  return (
+    <section className="relative w-full h-screen overflow-hidden bg-background">
+      {/* Slides */}
+      {slides.map((slide, i) => (
+        <div
+          key={i}
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+            i === current ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <img
+            src={slide.image}
+            alt={slide.alt}
+            className="w-full h-full object-cover"
+          />
+          {/* Vignette overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30" />
         </div>
+      ))}
 
-        <h1 className={`font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <span className="text-gradient">MSTACH</span>
-          <br />
-          <span className="text-foreground">ART</span>
-        </h1>
+      {/* Navigation arrows */}
+      <button
+        onClick={prev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-foreground/50 hover:text-foreground transition-colors"
+        aria-label="Previous"
+      >
+        <ChevronLeft className="w-8 h-8" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-foreground/50 hover:text-foreground transition-colors"
+        aria-label="Next"
+      >
+        <ChevronRight className="w-8 h-8" />
+      </button>
 
-        <p className={`font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>Ilustração - Concept - Pixel Art - Animation - Game dev</p>
-
-        <div className={`flex flex-wrap gap-4 justify-center transition-all duration-1000 delay-900 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <a href="#gallery" className="px-8 py-4 accent-gradient text-primary-foreground rounded-full font-medium shadow-soft hover:scale-105 transition-transform duration-300">
-            Ver Projetos
-          </a>
-          <a href="#about" className="px-8 py-4 glass-effect rounded-full font-medium hover:bg-muted transition-colors duration-300">
-            Sobre Mim
-          </a>
-        </div>
+      {/* Slide indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              i === current
+                ? "bg-foreground w-6"
+                : "bg-foreground/30 hover:bg-foreground/50"
+            }`}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
       </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-primary rounded-full animate-pulse" />
-        </div>
-      </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
