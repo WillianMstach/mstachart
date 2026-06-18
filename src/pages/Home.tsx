@@ -23,10 +23,10 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background" />
         <div className="relative z-10 h-full flex flex-col items-center justify-end pb-24 text-center px-6">
           <h1 className="font-display text-5xl md:text-7xl tracking-wide drop-shadow-lg">
-            Portfólio
+            MSTACH ART
           </h1>
           <p className="mt-4 text-sm md:text-base uppercase tracking-[0.4em] text-foreground/80">
-            Pixel Art · Ilustração · Concepts
+            PIXEL ART · ILUSTRAÇÃO · CONCEPTS · GAMES
           </p>
         </div>
       </section>

@@ -31,7 +31,7 @@ const Header = () => {
     >
       <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
         <Link to="/" className="font-display text-lg tracking-[0.25em] uppercase">
-          <span className="text-accent">¤</span> Portfólio
+          <span className="text-accent">¤</span> MSTACH ART
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
