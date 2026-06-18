@@ -37,15 +37,15 @@ const Home = () => {
         </h2>
         <div className="mt-10 mx-auto h-px w-3/4 max-w-5xl bg-border" />
 
-        <div className="mt-12 mx-auto max-w-5xl px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-12 mx-auto max-w-6xl px-6 flex flex-row gap-4 h-[400px] md:h-[500px]">
           {categories.map((c) => (
             <Link
               key={c.to}
               to={c.to}
-              className="group relative block aspect-[4/3] overflow-hidden bg-card border border-border/50"
+              className="group relative flex-1 min-w-0 overflow-hidden bg-card border border-border/50 transition-all duration-500 ease-out hover:flex-[3]"
             >
-              <div className="absolute inset-0 flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
-                <span className="font-display text-2xl uppercase tracking-[0.3em]">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="font-display text-xl md:text-2xl uppercase tracking-[0.3em] whitespace-nowrap transition-transform duration-500 group-hover:scale-110">
                   {c.label}
                 </span>
               </div>
