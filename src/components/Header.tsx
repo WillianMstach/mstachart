@@ -1,103 +1,86 @@
-import { useState, useEffect } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
 
-const navLinks = [
-  { label: "HOME", href: "/" },
-  { label: "PROJETOS", href: "/#gallery" },
-  { label: "CURSOS", href: "/#courses" },
-  { label: "JOGOS", href: "/games" },
-  { label: "SOBRE", href: "/#about" },
-  { label: "CONTATO", href: "/#contact" },
+const links = [
+  { to: "/", label: "Home" },
+  { to: "/illustrations", label: "Illustrations" },
+  { to: "/pixel-art", label: "Pixel Art" },
+  { to: "/games", label: "Games" },
+  { to: "/concepts", label: "Concepts" },
+  { to: "/prints", label: "Prints" },
+  { to: "/info", label: "Info" },
 ];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const handleNavClick = (e: React.MouseEvent, href: string) => {
-    setIsMobileMenuOpen(false);
-    if (href.startsWith("/#")) {
-      const id = href.slice(2);
-      if (location.pathname === "/") {
-        e.preventDefault();
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border py-3"
-          : "bg-transparent py-5"
+      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+        scrolled ? "bg-background/90 backdrop-blur-md border-b border-border/50" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="font-display text-xl font-bold tracking-wider">
-          <span className="text-gradient">MSTACH</span>
-          <span className="text-foreground">.ART</span>
+      <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
+        <Link to="/" className="font-display text-lg tracking-[0.25em] uppercase">
+          <span className="text-accent">¤</span> Portfólio
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              to={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className={`text-sm font-medium tracking-wider transition-colors duration-300 ${
-                (link.href === "/" && location.pathname === "/")
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+        <nav className="hidden md:flex items-center gap-1">
+          {links.map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.to === "/"}
+              className={({ isActive }) =>
+                `px-3 py-2 text-sm uppercase tracking-[0.2em] font-medium transition-colors ${
+                  isActive ? "text-accent" : "text-foreground/80 hover:text-foreground"
+                }`
+              }
             >
-              {link.label}
-            </Link>
+              {l.label}
+            </NavLink>
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden p-2 text-foreground"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border transition-all duration-300 ${
-          isMobileMenuOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-4 pointer-events-none"
-        }`}
-      >
-        <nav className="flex flex-col p-6 gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              to={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="text-sm font-medium tracking-wider text-muted-foreground hover:text-foreground transition-colors py-2"
-            >
-              {link.label}
-            </Link>
-          ))}
+      {open && (
+        <nav className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-md">
+          <div className="px-6 py-4 flex flex-col gap-1">
+            {links.map((l) => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.to === "/"}
+                onClick={() => setOpen(false)}
+                className={({ isActive }) =>
+                  `py-3 text-sm uppercase tracking-[0.25em] ${
+                    isActive ? "text-accent" : "text-foreground/80"
+                  }`
+                }
+              >
+                {l.label}
+              </NavLink>
+            ))}
+          </div>
         </nav>
-      </div>
+      )}
     </header>
   );
 };
