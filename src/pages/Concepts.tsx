@@ -1,15 +1,15 @@
 import CategoryPage from "@/components/CategoryPage";
 import banner from "@/assets/banner-hero.jpg";
 
-const Games = () => (
+const Concepts = () => (
   <CategoryPage
-    title="Games"
+    title="Concepts"
     banner={banner}
-    items={Array.from({ length: 3 }).map((_, i) => ({
+    items={Array.from({ length: 6 }).map((_, i) => ({
       src: "/placeholder.svg",
-      title: `Game ${i + 1}`,
+      title: `Concept ${i + 1}`,
     }))}
   />
 );
 
-export default Games;
+export default Concepts;
